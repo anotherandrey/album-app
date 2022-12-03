@@ -17,14 +17,19 @@ const Dashboard = observer((props: DashboardProps) => {
     const api = new Api.AlbumPageableRestControllerApi()
     api
       .getImages({ ...props })
-      .then(imageDtoArray => (albumStore.items = imageDtoArray.items ?? []))
+      .then(imageDtoArray => {
+        albumStore.totalPages = imageDtoArray.totalPages ?? 0
+        albumStore.items = imageDtoArray.items ?? []
+      })
       .catch(error => console.error(error))
   }, [props])
 
   return (
     <Flex justifyContent={'center'} flexFlow={'row wrap'} gap={1}>
       {albumStore.items.map((item, key) => (
-        <ImageCard item={item} key={key} />
+        <div key={key}>
+          <ImageCard item={item} />
+        </div>
       ))}
     </Flex>
   )

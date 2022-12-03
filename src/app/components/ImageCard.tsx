@@ -4,10 +4,9 @@ import * as Api from '../openapi'
 
 type ImageCardProps = {
   item: Api.ImageDto
-  key: number
 }
 
-const ImageCard = ({ item, key }: ImageCardProps) => {
+const ImageCard = ({ item }: ImageCardProps) => {
   const [base64, setBase64] = useState<string>('')
 
   useEffect(() => {
@@ -20,7 +19,6 @@ const ImageCard = ({ item, key }: ImageCardProps) => {
 
   return (
     <Box
-      key={key}
       border={'1px solid #e3e3e3'}
       borderRadius={'0.375rem'}
       overflow={'hidden'}
