@@ -1,12 +1,15 @@
 import { Stack, Button, ButtonGroup, Box } from '@chakra-ui/react'
+import { observer } from 'mobx-react-lite'
+import { albumStore } from '../stores'
 
 type PaginatorProps = {
   page: number
   setPage: (page: number) => void
-  totalPages: number
 }
 
-const Paginator = ({ page, setPage, totalPages }: PaginatorProps) => {
+const Paginator = observer(({ page, setPage }: PaginatorProps) => {
+  const totalPages = albumStore.totalPages - 1
+
   const handleOnClick = (n: number) => {
     const nextPage = page + n
     if (nextPage >= 0 && nextPage <= totalPages) {
@@ -21,8 +24,8 @@ const Paginator = ({ page, setPage, totalPages }: PaginatorProps) => {
         <Button onClick={() => handleOnClick(-1)}>{'<'}</Button>
       </ButtonGroup>
       <Box display={'inline'}>
-        {[page, 'of', totalPages].map(item => (
-          <Box display={'inline'} mx={3}>
+        {[page + 1, 'of', totalPages + 1].map((item, key) => (
+          <Box key={key} display={'inline'} mx={3}>
             {item}
           </Box>
         ))}
@@ -33,6 +36,6 @@ const Paginator = ({ page, setPage, totalPages }: PaginatorProps) => {
       </ButtonGroup>
     </Stack>
   )
-}
+})
 
 export { Paginator }
