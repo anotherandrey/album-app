@@ -5,20 +5,20 @@ info:
 servers:
   - url: http://localhost:8080/api/v1
 tags:
-  - name: album-resource-rest-controller
-  - name: album-base64-rest-controller
-  - name: album-pageable-rest-controller
-  - name: album-crud-rest-controller
+  - name: images-resource-rest-controller
+  - name: images-base64-rest-controller
+  - name: images-pageable-rest-controller
+  - name: images-crud-rest-controller
 paths:
   /images/resource/{id}:
     get:
       operationId: getResource
       tags:
-        - album-resource-rest-controller
+        - images-resource-rest-controller
       description: |
         get image resource
       parameters:
-        - $ref: '../album.parameters.yaml#/parameters/id'
+        - $ref: '../images.parameters.yaml#/parameters/id'
       responses:
         '200':
           description: |
@@ -41,11 +41,11 @@ paths:
     get:
       operationId: getBase64
       tags:
-        - album-base64-rest-controller
+        - images-base64-rest-controller
       description: |
         get base64 image
       parameters:
-        - $ref: '../album.parameters.yaml#/parameters/id'
+        - $ref: '../images.parameters.yaml#/parameters/id'
       responses:
         '200':
           description: |
@@ -68,14 +68,14 @@ paths:
     get:
       operationId: getImages
       tags:
-        - album-pageable-rest-controller
+        - images-pageable-rest-controller
       description: |
         get pageable images
       parameters:
-        - $ref: '../album.parameters.yaml#/parameters/page'
-        - $ref: '../album.parameters.yaml#/parameters/pageSize'
-        - $ref: '../album.parameters.yaml#/parameters/sortBy'
-        - $ref: '../album.parameters.yaml#/parameters/sortDirection'
+        - $ref: '../images.parameters.yaml#/parameters/page'
+        - $ref: '../images.parameters.yaml#/parameters/pageSize'
+        - $ref: '../images.parameters.yaml#/parameters/sortBy'
+        - $ref: '../images.parameters.yaml#/parameters/sortDirection'
       responses:
         '200':
           description: |
@@ -83,7 +83,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../album.schemes.yaml#/schemes/ImageDtoArray'
+                $ref: '../images.schemes.yaml#/schemes/PageableImageDto'
         '400':
           description: |
             can't get pageable images
@@ -93,12 +93,12 @@ paths:
     post:
       operationId: create
       tags:
-        - album-crud-rest-controller
+        - images-crud-rest-controller
       description: |
         create image
       parameters:
-        - $ref: '../album.parameters.yaml#/parameters/filename'
-        - $ref: '../album.parameters.yaml#/parameters/contentType'
+        - $ref: '../images.parameters.yaml#/parameters/filename'
+        - $ref: '../images.parameters.yaml#/parameters/contentType'
 
       # resource
       requestBody:
@@ -115,7 +115,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '../album.schemes.yaml#/schemes/ImageDto'
+                $ref: '../images.schemes.yaml#/schemes/ImageDto'
         '400':
           description: |
             can't create image
@@ -126,11 +126,11 @@ paths:
     delete:
       operationId: delete
       tags:
-        - album-crud-rest-controller
+        - images-crud-rest-controller
       description: |
         delete image
       parameters:
-        - $ref: '../album.parameters.yaml#/parameters/id'
+        - $ref: '../images.parameters.yaml#/parameters/id'
       responses:
         '200':
           description: |

@@ -6,7 +6,7 @@ wget 'https://repo1.maven.org/maven2/org/openapitools/openapi-generator-cli/6.0.
 
 java -jar "$OPENAPI_GENERATOR_CLI" generate \
 		-g 'typescript-fetch' \
-		-i 'src/openapi/v1/album.yaml' \
+		-i 'src/openapi/v1/images.yaml' \
 		-o 'src/app/openapi/'
 
 rm -f "$OPENAPI_GENERATOR_CLI"

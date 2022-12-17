@@ -14,12 +14,12 @@ const Dashboard = observer(() => {
   const [sortDirection, setSortDirection] = useState<SortDirection>('asc')
 
   useEffect(() => {
-    const api = new Api.AlbumPageableRestControllerApi()
+    const api = new Api.ImagesPageableRestControllerApi()
     api
       .getImages({ page, pageSize: PAGE_SIZE, sortBy: SORT_BY, sortDirection })
-      .then(imageDtoArray => {
-        albumStore.totalPages = imageDtoArray.totalPages ?? 0
-        albumStore.items = imageDtoArray.items ?? []
+      .then(pageableImageDto => {
+        albumStore.totalPages = pageableImageDto.totalPages ?? 0
+        albumStore.items = pageableImageDto.images ?? []
       })
       .catch(error => console.error(error))
   }, [page, sortDirection])

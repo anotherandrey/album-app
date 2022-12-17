@@ -10,7 +10,7 @@ const ImageCard = ({ item }: ImageCardProps) => {
   const [base64, setBase64] = useState<string>('')
 
   useEffect(() => {
-    const api = new Api.AlbumBase64RestControllerApi()
+    const api = new Api.ImagesBase64RestControllerApi()
     api
       .getBase64({ id: item.id })
       .then(base64 => setBase64(base64 ?? ''))

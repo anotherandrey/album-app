@@ -1,16 +1,16 @@
 schemes:
-  ImageDtoArray:
+  PageableImageDto:
     type: object
     properties:
       totalPages:
         type: integer
-      items:
+      images:
         type: array
         items:
-          $ref: '../album.schemes.yaml#/schemes/ImageDto'
+          $ref: '../images.schemes.yaml#/schemes/ImageDto'
       required:
         - totalPages
-        - items
+        - images
 
   ImageDto:
     type: object
