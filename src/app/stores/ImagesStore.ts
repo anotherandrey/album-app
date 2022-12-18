@@ -2,7 +2,7 @@ import { makeObservable, observable, override } from 'mobx'
 import { Store } from './Store'
 import * as Api from '../openapi'
 
-class AlbumStore extends Store<Api.ImageDto> {
+class ImagesStore extends Store<Api.ImageDto> {
   public totalPages: number = 0
 
   constructor() {
@@ -16,5 +16,5 @@ class AlbumStore extends Store<Api.ImageDto> {
   }
 }
 
-const albumStore = new AlbumStore()
-export { albumStore }
+const imagesStore = new ImagesStore()
+export { imagesStore }

@@ -1,7 +1,7 @@
 import { useDropzone } from 'react-dropzone'
 import { Box, Button } from '@chakra-ui/react'
 import * as Api from '../openapi'
-import { albumStore, prepFilesStore } from '../stores'
+import { imagesStore, prepFilesStore } from '../stores'
 import { PrepFiles } from './'
 
 const PrepFilesSubmitForm = () => {
@@ -13,12 +13,12 @@ const PrepFilesSubmitForm = () => {
 
   const handleOnSubmit = (e: any) => {
     e.preventDefault()
-    const api = new Api.AlbumCrudRestControllerApi()
+    const api = new Api.ImagesCrudRestControllerApi()
     prepFilesStore.items.forEach(item => {
       const xFilename: string = item.name
       api
         .create({ xFilename, contentType: item.type, body: item })
-        .then(image => albumStore.addItem(image))
+        .then(image => imagesStore.addItem(image))
         .catch(error => console.error(error))
     })
     prepFilesStore.deleteAllItems()

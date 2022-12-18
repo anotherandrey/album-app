@@ -1,6 +1,6 @@
 import { Stack, Button, ButtonGroup, Box } from '@chakra-ui/react'
 import { observer } from 'mobx-react-lite'
-import { albumStore } from '../stores'
+import { imagesStore } from '../stores'
 
 type PaginatorProps = {
   page: number
@@ -8,7 +8,7 @@ type PaginatorProps = {
 }
 
 const Paginator = observer(({ page, setPage }: PaginatorProps) => {
-  const totalPages = albumStore.totalPages - 1
+  const totalPages = imagesStore.totalPages - 1
 
   const handleOnClick = (n: number) => {
     const nextPage = page + n

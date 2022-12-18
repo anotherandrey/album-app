@@ -1,4 +1,4 @@
-import { albumStore } from './AlbumStore'
+import { imagesStore } from './ImagesStore'
 import { prepFilesStore } from './PrepFilesStore'
 
-export { albumStore, prepFilesStore }
+export { imagesStore, prepFilesStore }
